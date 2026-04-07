@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pose Runner - AI Powered Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <h1>Pose Runner</h1>
+        <div id="canvas-container">
+            <canvas id="gameCanvas" width="800" height="400"></canvas>
+            <div id="start-screen" class="overlay">
+                <h2>Press Space to Start</h2>
+                <p>Use keyboard to simulate poses:</p>
+                <ul>
+                    <li>[N] Normal (Default)</li>
+                    <li>[D] Duck (Blue Obstacles)</li>
+                    <li>[H] Hands Up (Red Obstacles)</li>
+                    <li>[O] One Leg (Green Obstacles)</li>
+                </ul>
+            </div>
+            <div id="game-over-screen" class="overlay hidden">
+                <h2>Game Over!</h2>
+                <p>Score: <span id="final-score">0</span></p>
+                <p>Press Space to Restart</p>
+            </div>
+        </div>
+
+        <div id="status-panel">
+            <div class="status-item">
+                <h3>Current Pose Detected:</h3>
+                <div id="current-pose" class="pose-indicator pose-normal">Normal [N]</div>
+            </div>
+            <div class="status-item">
+                <h3>Score:</h3>
+                <div id="score">0</div>
+            </div>
+        </div>
+
+        <div id="webcam-container">
+            <!-- Teachable machine webcam will be injected here -->
+        </div>
+    </div>
+
+    <!-- Add TensorFlow.js and Teachable Machine libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
+
+    <script src="game.js"></script>
+</body>
+</html>
