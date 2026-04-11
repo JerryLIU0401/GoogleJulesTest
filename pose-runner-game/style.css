@@ -127,6 +127,38 @@ canvas {
     transition: all 0.3s ease;
 }
 
+input[type=range] {
+    -webkit-appearance: none;
+    width: 100%;
+    background: transparent;
+    margin: 10px 0;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: var(--text-color);
+    cursor: pointer;
+    margin-top: -6px;
+    box-shadow: 0 0 5px rgba(233, 69, 96, 0.5);
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 4px;
+    cursor: pointer;
+    background: #333;
+    border-radius: 2px;
+}
+
+#speed-display {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--color-normal);
+}
+
 #score {
     font-size: 1.5rem;
     font-weight: bold;

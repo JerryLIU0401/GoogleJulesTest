@@ -5,6 +5,8 @@ const gameOverScreen = document.getElementById('game-over-screen');
 const scoreElement = document.getElementById('score');
 const finalScoreElement = document.getElementById('final-score');
 const currentPoseElement = document.getElementById('current-pose');
+const speedSlider = document.getElementById('speed-slider');
+const speedDisplay = document.getElementById('speed-display');
 
 // Constants
 const CANVAS_WIDTH = 800;
@@ -203,6 +205,12 @@ window.addEventListener('load', () => {
     }
 });
 
+// UI Control Listeners
+speedSlider.addEventListener('input', (e) => {
+    gameSpeed = parseFloat(e.target.value);
+    speedDisplay.innerText = gameSpeed.toFixed(1);
+});
+
 // Controls (Mocking Model Input & Start Game)
 window.addEventListener('keydown', (e) => {
     if (e.code === 'Space') {
@@ -295,7 +303,12 @@ function handleObstacles() {
             scoreElement.innerText = score;
 
             // Increase speed slightly
-            if(score % 50 === 0) gameSpeed += 0.5;
+            if(score % 50 === 0) {
+                gameSpeed += 0.5;
+                // Update slider UI to reflect new speed
+                speedSlider.value = gameSpeed;
+                speedDisplay.innerText = gameSpeed.toFixed(1);
+            }
         }
     }
 }
@@ -306,7 +319,10 @@ function resetGame() {
     gameOverScreen.classList.add('hidden');
     obstacles = [];
     score = 0;
-    gameSpeed = 5;
+
+    // Read starting speed from slider
+    gameSpeed = parseFloat(speedSlider.value);
+
     frames = 0;
     scoreElement.innerText = score;
     updatePoseUI(POSES.NORMAL);
