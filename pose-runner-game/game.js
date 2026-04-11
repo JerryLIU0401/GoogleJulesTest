@@ -19,13 +19,13 @@ let animationId;
 let frames = 0;
 
 // -----------------------------------------
-// Teachable Machine AI Setup (Placeholder)
+// Teachable Machine AI Setup
 // -----------------------------------------
-// Replace this URL with your trained model's URL when ready
-const URL = "https://teachablemachine.withgoogle.com/models/YOUR_MODEL_ID/";
+// Using user provided Teachable Machine model URL
+const URL = "https://teachablemachine.withgoogle.com/models/eGF6xs1Bg/";
 let model, webcam, ctxWebcam, labelContainer, maxPredictions;
 let isModelLoaded = false;
-let isUseWebcam = false; // Toggle to false to use keyboard
+let isUseWebcam = false; // Will be set to true when model loads
 
 async function initModel() {
     // This function will be triggered later when you have the actual model URL
@@ -195,7 +195,15 @@ class Obstacle {
     }
 }
 
-// Controls (Mocking Model Input)
+// Initialize AI model on page load (it will ask for webcam permission)
+window.addEventListener('load', () => {
+    // Only attempt to load if it hasn't been loaded yet
+    if(!isModelLoaded) {
+        initModel();
+    }
+});
+
+// Controls (Mocking Model Input & Start Game)
 window.addEventListener('keydown', (e) => {
     if (e.code === 'Space') {
         if (gameState === 'START' || gameState === 'GAMEOVER') {
