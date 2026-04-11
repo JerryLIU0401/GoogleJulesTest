@@ -83,13 +83,18 @@ async function predictPose() {
         }
     }
 
-    // Map model classes to our game POSES enums
-    // Make sure your Teachable Machine classes are named similar to these!
-    if (highestProb > 0.7) { // Threshold
-        if (bestClass.includes("DUCK") || bestClass.includes("蹲")) updatePoseUI(POSES.DUCK);
-        else if (bestClass.includes("HAND") || bestClass.includes("手")) updatePoseUI(POSES.HANDSUP);
-        else if (bestClass.includes("LEG") || bestClass.includes("腳")) updatePoseUI(POSES.ONELEG);
-        else updatePoseUI(POSES.NORMAL);
+    // Map user's specific Teachable Machine labels to game POSES enums
+    if (highestProb > 0.7) { // Confidence Threshold
+        if (bestClass.includes("DUCK")) {
+            updatePoseUI(POSES.DUCK);
+        } else if (bestClass.includes("RISEHAND")) {
+            updatePoseUI(POSES.HANDSUP);
+        } else if (bestClass.includes("LIFTLEG")) {
+            updatePoseUI(POSES.ONELEG);
+        } else {
+            // Default fallback or "STAND"
+            updatePoseUI(POSES.NORMAL);
+        }
     }
 }
 
