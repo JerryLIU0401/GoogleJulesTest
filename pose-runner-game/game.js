@@ -7,6 +7,8 @@ const finalScoreElement = document.getElementById('final-score');
 const currentPoseElement = document.getElementById('current-pose');
 const speedSlider = document.getElementById('speed-slider');
 const speedDisplay = document.getElementById('speed-display');
+const btnStart = document.getElementById('btn-start');
+const btnRestart = document.getElementById('btn-restart');
 
 // Constants
 const CANVAS_WIDTH = 800;
@@ -60,10 +62,16 @@ async function initModel() {
 }
 
 async function loopWebcam(timestamp) {
-    if(!isUseWebcam || gameState === 'GAMEOVER') return;
+    if(!isUseWebcam) return;
 
+    // Always update webcam frame to prevent freezing
     webcam.update();
-    await predictPose();
+
+    // Only predict poses when actually playing
+    if (gameState === 'PLAYING') {
+        await predictPose();
+    }
+
     window.requestAnimationFrame(loopWebcam);
 }
 
@@ -215,6 +223,10 @@ speedSlider.addEventListener('input', (e) => {
     gameSpeed = parseFloat(e.target.value);
     speedDisplay.innerText = gameSpeed.toFixed(1);
 });
+
+// Button Listeners
+btnStart.addEventListener('click', resetGame);
+btnRestart.addEventListener('click', resetGame);
 
 // Controls (Mocking Model Input & Start Game)
 window.addEventListener('keydown', (e) => {

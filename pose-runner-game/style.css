@@ -92,6 +92,29 @@ canvas {
     font-size: 1.1rem;
 }
 
+.action-btn {
+    background-color: var(--text-color);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 20px 0;
+    transition: transform 0.2s, background-color 0.2s;
+    box-shadow: 0 4px 10px rgba(233, 69, 96, 0.4);
+}
+
+.action-btn:hover {
+    background-color: #ff5c77;
+    transform: scale(1.05);
+}
+
+.action-btn:active {
+    transform: scale(0.95);
+}
+
 .hidden {
     display: none !important;
 }

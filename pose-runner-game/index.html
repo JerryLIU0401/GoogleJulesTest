@@ -12,7 +12,9 @@
         <div id="canvas-container">
             <canvas id="gameCanvas" width="800" height="400"></canvas>
             <div id="start-screen" class="overlay">
-                <h2>Press Space to Start</h2>
+                <h2>Pose Runner</h2>
+                <button id="btn-start" class="action-btn">Start Game</button>
+                <p>Press Space or Click to Start</p>
                 <p>Use keyboard to simulate poses:</p>
                 <ul>
                     <li>[N] Normal (Default)</li>
@@ -24,7 +26,8 @@
             <div id="game-over-screen" class="overlay hidden">
                 <h2>Game Over!</h2>
                 <p>Score: <span id="final-score">0</span></p>
-                <p>Press Space to Restart</p>
+                <button id="btn-restart" class="action-btn">Restart Game</button>
+                <p>Press Space or Click to Restart</p>
             </div>
         </div>
 
