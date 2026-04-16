@@ -67,8 +67,8 @@ async function loopWebcam(timestamp) {
     // Always update webcam frame to prevent freezing
     webcam.update();
 
-    // Only predict poses when actually playing
-    if (gameState === 'PLAYING') {
+    // Predict poses in PLAYING and START states (so users can test their webcam before starting)
+    if (gameState === 'PLAYING' || gameState === 'START') {
         await predictPose();
     }
 
@@ -236,8 +236,8 @@ window.addEventListener('keydown', (e) => {
         }
     }
 
-    // Only allow pose changes if playing
-    if (gameState === 'PLAYING') {
+    // Allow pose changes in PLAYING and START states
+    if (gameState === 'PLAYING' || gameState === 'START') {
         let newPose = currentPose;
         if (e.key.toLowerCase() === 'n') newPose = POSES.NORMAL;
         if (e.key.toLowerCase() === 'd') newPose = POSES.DUCK;
