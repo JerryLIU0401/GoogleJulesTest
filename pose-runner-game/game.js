@@ -26,7 +26,7 @@ let frames = 0;
 // Teachable Machine AI Setup
 // -----------------------------------------
 // Using user provided Teachable Machine model URL
-const URL = "https://teachablemachine.withgoogle.com/models/eGF6xs1Bg/";
+const URL = "https://teachablemachine.withgoogle.com/models/ghK0n_vhc/";
 let model, webcam, ctxWebcam, labelContainer, maxPredictions;
 let isModelLoaded = false;
 let isUseWebcam = false; // Will be set to true when model loads
